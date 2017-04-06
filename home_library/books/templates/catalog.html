@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Wykaz książek:</h2>
+<h3>Ostatnio dodane książki:</h3>
 <ul>
 
-    {% for book in books %}
+    {% for book in books|dictsortreversed:"id" %}
     <li><a href="{% url 'book' book_id=book.id %}"><img src="{{ book.logo }}" height="42" width="42"> {{ book.title }}, {{ book.author }}</a></li>
     {% empty %}
         pusto

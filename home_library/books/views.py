@@ -46,6 +46,7 @@ class AddBookView(CreateView):
     fields = ['title', 'author', 'type', 'genre', 'publisher', 'description', 'year', 'logo']
 
 
-class DeleteBookView(LoginRequiredMixin, DeleteView):
+#LoginRequiredMixin
+class DeleteBookView(DeleteView):
     model = Book
     success_url = reverse_lazy('homepage')

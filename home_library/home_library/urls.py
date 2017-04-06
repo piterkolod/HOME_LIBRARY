@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^add_book', AddBookView.as_view(), name='add-book'),
     url(r'^book/(?P<book_id>(\d)+)', BookView.as_view(), name='book'),
     url(r'^delete_book/(?P<pk>\d+)', DeleteBookView.as_view(), name='delete-view')
+#url(r'^update_subject/(?P<pk>\d+)', UpdateSubjectView.as_view(), name='update-subject'),
 ]

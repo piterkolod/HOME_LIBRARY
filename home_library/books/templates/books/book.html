@@ -16,8 +16,8 @@
     <strong>Rok wydania:</strong> {{ book.year }}<br><br>
     <strong>Wydawnictwo:</strong> {{ book.publisher }}<br><br>
 
-    <br>
-    <input type="submit" value="Usuń książkę"/>
+<a href="{% url 'delete-person' book.id %}">Usuń książkę</a>
+
 </div>
 {% endblock %}
 

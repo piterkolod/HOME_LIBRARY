@@ -1,0 +1,5 @@
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Czy na pewno chcesz usunąć książkę "{{ object }}"?</p>
+    <input type="submit" value="Potwierdź" />
+</form>
