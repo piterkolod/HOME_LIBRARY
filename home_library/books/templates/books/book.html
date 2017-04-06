@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <form>
+<a href="{% url 'homepage' %}">Powrót do katalogu</a>
+</form>
+    <br>
+    <img src="{{ book.logo }}" height="300">
+    <input type="submit" value="Dodaj do ulubionych"/>
+</div>
+<br><br>
+<div>
+    <strong>Tytuł:</strong> {{ book.title|upper }}<br><br>
+    <strong>Autor:</strong> {{ book.author }},<br><br>
+    <strong>Rok wydania:</strong> {{ book.year }}<br><br>
+    <strong>Wydawnictwo:</strong> {{ book.publisher }}<br><br>
+
+    <br>
+    <input type="submit" value="Usuń książkę"/>
+</div>
+{% endblock %}
+
