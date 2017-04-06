@@ -1,5 +1,14 @@
 from django.shortcuts import render
 from django.views import View
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import (
+    authenticate,
+    get_user_model,
+    login,
+    logout
+)
+
+from django.contrib.auth import authenticate, login
 from django.views.generic.edit import (
     FormView,
     CreateView,
@@ -13,7 +22,6 @@ from .models import (
     Reader
 )
 
-from .forms import AddBookForm
 
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
@@ -39,9 +47,6 @@ class BookView(View):
 
 
 class AddBookView(CreateView):
-    # template_name = 'book_form.html'
-    # form_class = AddBookForm
-    # exclude = ['is_favorite']
     model = Book
     fields = ['title', 'author', 'type', 'genre', 'publisher', 'description', 'year', 'logo']
 
@@ -50,3 +55,14 @@ class AddBookView(CreateView):
 class DeleteBookView(DeleteView):
     model = Book
     success_url = reverse_lazy('homepage')
+
+
+class UpdateBookView(UpdateView):
+    model = Book
+    fields = '__all__'
+
+
+class LogoutView(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect(reverse('homepage'))

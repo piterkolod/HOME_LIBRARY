@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from books.views import (
     AddBookView,
     BookView,
     CatalogView,
-    DeleteBookView
+    DeleteBookView,
+    LogoutView,
+    UpdateBookView
 )
 
 urlpatterns = [
@@ -27,6 +30,8 @@ urlpatterns = [
     url(r'^catalog', CatalogView.as_view(), name='homepage'),
     url(r'^add_book', AddBookView.as_view(), name='add-book'),
     url(r'^book/(?P<book_id>(\d)+)', BookView.as_view(), name='book'),
-    url(r'^delete_book/(?P<pk>\d+)', DeleteBookView.as_view(), name='delete-view')
-#url(r'^update_subject/(?P<pk>\d+)', UpdateSubjectView.as_view(), name='update-subject'),
+    url(r'^update_book/(?P<pk>\d+)', UpdateBookView.as_view(), name='upd-book'),
+    url(r'^delete_book/(?P<pk>\d+)', DeleteBookView.as_view(), name='delete-view'),
+    url(r'^login/$', auth_views.login, {'template_name': 'books/login.html'}, name='login'),
+    url(r'^logout', LogoutView.as_view(), name='logout')
 ]

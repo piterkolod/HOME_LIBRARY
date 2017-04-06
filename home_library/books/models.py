@@ -58,9 +58,10 @@ class Book(models.Model):
 
 class Reader(models.Model):
     user = models.OneToOneField(User, null=True, default=None)
-    first_name = models.CharField(max_length=32)
-    lat_name = models.CharField(max_length=64)
+    username = models.CharField(max_length=32)
+    email = models.EmailField(max_length=70,blank=True)
+    password = models.CharField(max_length=256)
     books = models.ManyToManyField(Book)
 
     def __str__(self):
-        return '{} {}'.format(self.first_name, self.last_name)
+        return self.username

@@ -1,21 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
+<div id="book0">
     <form>
-<a href="{% url 'homepage' %}">Powrót do katalogu</a>
+<a href="{% url 'homepage' %}" style="text-decoration:none">Powrót do katalogu</a>
 </form>
     <br>
+        {% if user.is_authenticated %}
+            <strong>Zalogowany jako:  </strong>{{ user }}
+            <a href="{% url 'logout' %}" style="text-decoration:none">Wyloguj</a>
+        {% else %}
+            <a href="{% url 'login' %}" style="text-decoration:none">Logowanie</a>
+    {% endif %}
+    <br><br>
     <img src="{{ book.logo }}" height="300">
     <input type="submit" value="Dodaj do ulubionych"/>
 </div>
 <br><br>
-<div>
+<div id='book1'>
     <strong>Tytuł:</strong> {{ book.title|upper }}<br><br>
     <strong>Autor:</strong> {{ book.author }},<br><br>
     <strong>Rok wydania:</strong> {{ book.year }}<br><br>
     <strong>Wydawnictwo:</strong> {{ book.publisher }}<br><br>
 
+    <a href="{% url 'upd-book' pk=book.id %}" style="text-decoration:none">Edytuj dane książki</a>
+    <br>
+    <a href="{% url 'delete-view' pk=book.id %}" style="text-decoration:none">Usuń książkę</a>
+</div>
+<div id='book2'>
 
 </div>
 {% endblock %}
