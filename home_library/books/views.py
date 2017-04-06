@@ -46,20 +46,19 @@ class BookView(View):
         return render(request, 'books/book.html', ctx)
 
 
-class AddBookView(CreateView):
+class AddBookView(LoginRequiredMixin, CreateView):
     model = Book
     fields = ['title', 'author', 'type', 'genre', 'publisher', 'description', 'year', 'logo']
 
 
-#LoginRequiredMixin
-class DeleteBookView(DeleteView):
+class DeleteBookView(LoginRequiredMixin, DeleteView):
     model = Book
     success_url = reverse_lazy('homepage')
 
 
-class UpdateBookView(UpdateView):
+class UpdateBookView(LoginRequiredMixin, UpdateView):
     model = Book
-    fields = '__all__'
+    fields = ['title', 'author', 'type', 'genre', 'publisher', 'description', 'year', 'logo']
 
 
 class LogoutView(LoginRequiredMixin, View):

@@ -11,12 +11,5 @@ from books.models import (
 )
 
 
-class AddBookForm(forms.Form):
-
-    class Meta:
-        model = Book
-        fields = '__all__'
-
-
-class SearchForm(forms.Form):
+class BookSearchForm(forms.Form):
     name = forms.CharField(label='Tytuł książki', max_length=128)

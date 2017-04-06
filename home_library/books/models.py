@@ -50,7 +50,7 @@ class Book(models.Model):
     is_favorite = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.title
+        return '{}{}'.format(self.title, self.author)
 
     def get_absolute_url(self):
         return reverse('book', kwargs={'book_id': self.id})
