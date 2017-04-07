@@ -19,6 +19,7 @@ from django.contrib.auth import views as auth_views
 from books.views import (
     AddBookView,
     BookView,
+    BookListView,
     CatalogView,
     DeleteBookView,
     LogoutView,
@@ -30,6 +31,7 @@ urlpatterns = [
     url(r'^catalog', CatalogView.as_view(), name='homepage'),
     url(r'^add_book', AddBookView.as_view(), name='add-book'),
     url(r'^book/(?P<book_id>(\d)+)', BookView.as_view(), name='book'),
+    url(r'^book_list/$', BookListView.as_view(), name='books'),
     url(r'^update_book/(?P<pk>\d+)', UpdateBookView.as_view(), name='upd-book'),
     url(r'^delete_book/(?P<pk>\d+)', DeleteBookView.as_view(), name='delete-view'),
     url(r'^login/$', auth_views.login, {'template_name': 'books/login.html'}, name='login'),

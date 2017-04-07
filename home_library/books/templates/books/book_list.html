@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div>
+    <a href="{% url 'homepage' %}" style="text-decoration:none"> &lt;&lt;Powrót do katalogu</a><br>
+</div>
+<div>
+    {% if user.is_authenticated %}
+        <strong>Zalogowany jako:  </strong>{{ user }}<br><br>
+        <a href="{% url 'add-book' %}" style="text-decoration:none">| Dodaj nową książkę |</a><br><br>
+        <a href="{% url 'logout' %}" style="text-decoration:none">| Wyloguj |</a>
+    {% else %}
+        <a href="{% url 'login' %}" style="text-decoration:none">| Logowanie | </a>
+        Tylko zalogowani użytkownicy mogą dodawac nowe książki
+    {% endif %}
+
+</div>
+<div>
+<ul>
+    {% for book in books|dictsort:"title" %}
+    <li style="list-style-type:none"><a href="{% url 'book' book_id=book.id %}" style="text-decoration:none">
+        <img src="{{ book.logo }}" height="80" width="60"> &nbsp; {{ book.title }}, {{ book.author }}, {{ book.year }},
+        {{ book.publisher }}
+    </a></li>
+    {% empty %}
+        pusto
+    {% endfor %}
+    </ul>
+    </div>
+{% endblock %}

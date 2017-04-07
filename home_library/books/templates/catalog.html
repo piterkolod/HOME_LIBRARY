@@ -17,11 +17,13 @@
 <ul>
 
     {% for book in books|dictsortreversed:"id" %}
-    <li style="list-style-type:none"><a href="{% url 'book' book_id=book.id %}" style="text-decoration:none"><img src="{{ book.logo }}" height="42" width="42"> &nbsp; {{ book.title }}, {{ book.author }}</a></li>
+    <li style="list-style-type:none"><a href="{% url 'book' book_id=book.id %}" style="text-decoration:none"><img src="{{ book.logo }}" height="60" width="50"> &nbsp; {{ book.title }}, {{ book.author }}</a></li>
     {% empty %}
         pusto
     {% endfor %}
 </ul>
+    <br>
+        <a href="{% url 'books' %}" style="text-decoration:none"> || Zobacz wszystkie książki &gt;&gt; ||</a><br>
 </div>
     <br>
 

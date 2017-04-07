@@ -19,7 +19,7 @@ from .models import (
     Author,
     Book,
     Publisher,
-    Reader
+    Reader,
 )
 
 
@@ -44,6 +44,13 @@ class BookView(View):
         book = Book.objects.get(pk=book_id)
         ctx = {"book": book}
         return render(request, 'books/book.html', ctx)
+
+
+class BookListView(View):
+    def get(self, request):
+        books = Book.objects.all()
+        ctx = {"books": books}
+        return render(request, 'books/book_list.html', ctx)
 
 
 class AddBookView(LoginRequiredMixin, CreateView):
