@@ -11,7 +11,7 @@
         <a href="{% url 'logout' %}" style="text-decoration:none">| Wyloguj |</a>
     {% else %}
         <a href="{% url 'login' %}" style="text-decoration:none">| Logowanie | </a>
-        Tylko zalogowani użytkownicy mogą dodawac nowe książki
+        Tylko zalogowani użytkownicy mogą dodawać nowe książki
     {% endif %}
 
 </div>
@@ -20,7 +20,7 @@
     {% for book in books|dictsort:"title" %}
     <li style="list-style-type:none"><a href="{% url 'book' book_id=book.id %}" style="text-decoration:none">
         <img src="{{ book.logo }}" height="80" width="60"> &nbsp; {{ book.title }}, {{ book.author }}, {{ book.year }},
-        {{ book.publisher }}
+        {{ book.publisher }}, kategoria: {{ book.get_genre_display }}, typ: {{ book.get_type_display }}
     </a></li>
     {% empty %}
         pusto

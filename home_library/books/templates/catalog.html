@@ -31,9 +31,10 @@
         <strong>Zalogowany jako:  </strong>{{ user }}<br><br>
         <a href="{% url 'add-book' %}" style="text-decoration:none">| Dodaj nową książkę |</a><br><br>
         <a href="{% url 'logout' %}" style="text-decoration:none">| Wyloguj |</a>
+
     {% else %}
         <a href="{% url 'login' %}" style="text-decoration:none">| Logowanie | </a>
-        Tylko zalogowani użytkownicy mogą dodawac nowe książki
+        Tylko zalogowani użytkownicy mogą dodawać nowe książki
     {% endif %}
 
 {% endblock %}
