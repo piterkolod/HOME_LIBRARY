@@ -72,3 +72,7 @@ class LogoutView(LoginRequiredMixin, View):
     def get(self, request):
         logout(request)
         return HttpResponseRedirect(reverse('homepage'))
+
+class ReaderView(View):
+    model = Reader
+    fields = ['username', 'email', 'books']

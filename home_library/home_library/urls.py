@@ -23,7 +23,8 @@ from books.views import (
     CatalogView,
     DeleteBookView,
     LogoutView,
-    UpdateBookView
+    UpdateBookView,
+    ReaderView
 )
 
 urlpatterns = [
@@ -35,5 +36,6 @@ urlpatterns = [
     url(r'^update_book/(?P<pk>\d+)', UpdateBookView.as_view(), name='upd-book'),
     url(r'^delete_book/(?P<pk>\d+)', DeleteBookView.as_view(), name='delete-view'),
     url(r'^login/$', auth_views.login, {'template_name': 'books/login.html'}, name='login'),
-    url(r'^logout', LogoutView.as_view(), name='logout')
+    url(r'^logout', LogoutView.as_view(), name='logout'),
+    url(r'^reader$', ReaderView.as_view(), name='reader')
 ]

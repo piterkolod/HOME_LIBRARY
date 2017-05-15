@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<a href="{% url 'homepage' %}" style="text-decoration:none"> &lt;&lt;Powrót do katalogu</a><br>
+    <br>
+        {% if user.is_authenticated %}
+            <strong>Username:  </strong>{{ Reader.username }}
+            <strong>Tytuł:</strong> {{ book.title|upper }}<br><br>
+            <a href="{% url 'logout' %}" style="text-decoration:none">  | Wyloguj |</a>
+        {% else %}
+            <a href="{% url 'login' %}" style="text-decoration:none">Logowanie  </a>
+            Tylko zalogowani użytkownicy mogą edytować szczegóły książki.
+        {% endif %}
+    <br><br>
+    <img src="{{ book.logo }}" height="300">
+
+{% endblock %}
