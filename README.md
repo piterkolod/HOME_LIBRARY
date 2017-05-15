@@ -4,10 +4,4 @@ On the homepage, there are two sections - a "recommended book" on the left (in f
 Full list of books is sorted by title, you can go for details by clicking in selected position.
 Logged user can add new books, edit and delete existing one.
 
-To do in the near future:
-- favorite book - the marked books will be added to user collection,
-- user account - logged user will see his favorite books,
-- project deployment,
-- front-end.
-
 
